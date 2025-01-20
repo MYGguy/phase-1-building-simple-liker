@@ -4,9 +4,24 @@ const FULL_HEART = '♥'
 
 // Your JavaScript code goes here!
 
+const likeButtons = document.querySelectorAll('.like-glyph');
+
+likeButtons.forEach(button => {
+  button.addEventListener('click', handleLike);
+})
 
 
+function handleLike(e) {
+  mimicServerCall()
+    .then(() => {
+      e.target.textContent = FULL_HEART;
+      e.target.parentElement.classList.add('activated-heart');
+    })
+}
 
+// console.log(document.querySelector('like-glyph').innerHTML);
+
+// handleLike();
 //------------------------------------------------------------------------------
 // Don't change the code below: this function mocks the server response
 //------------------------------------------------------------------------------
