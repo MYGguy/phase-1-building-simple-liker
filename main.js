@@ -23,18 +23,13 @@ function handleLike(e) {
     .catch((error) => {
       modal.classList.remove('hidden');
       modalMessage.textContent = error;
-      // console.log(error);
       setTimeout(() => {
         modal.classList.add('hidden')
       }, 3000);
     })
-  console.log(isLiked);
 
 }
 
-// console.log(document.querySelector('like-glyph').innerHTML);
-
-// handleLike();
 //------------------------------------------------------------------------------
 // Don't change the code below: this function mocks the server response
 //------------------------------------------------------------------------------
