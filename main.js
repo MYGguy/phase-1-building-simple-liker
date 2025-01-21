@@ -5,6 +5,7 @@ const FULL_HEART = '♥'
 // Your JavaScript code goes here!
 
 const likeButtons = document.querySelectorAll('.like-glyph');
+const modal = document.getElementById('modal');
 
 likeButtons.forEach(button => {
   button.addEventListener('click', handleLike);
@@ -16,6 +17,13 @@ function handleLike(e) {
     .then(() => {
       e.target.textContent = FULL_HEART;
       e.target.parentElement.classList.add('activated-heart');
+    })
+    .catch((error) => {
+      modal.classList.remove('hidden');
+      console.log(error);
+      setTimeout(() => {
+        modal.classList.add('hidden')
+      }, 3000);
     })
 }
 
