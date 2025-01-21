@@ -14,10 +14,11 @@ likeButtons.forEach(button => {
 
 
 function handleLike(e) {
+  const isLiked = e.target.textContent === FULL_HEART;
   mimicServerCall()
     .then(() => {
-      e.target.textContent = FULL_HEART;
-      e.target.parentElement.classList.add('activated-heart');
+      e.target.textContent = isLiked ? EMPTY_HEART : FULL_HEART;
+      e.target.parentElement.classList.toggle('activated-heart', !isLiked);
     })
     .catch((error) => {
       modal.classList.remove('hidden');
@@ -27,6 +28,8 @@ function handleLike(e) {
         modal.classList.add('hidden')
       }, 3000);
     })
+  console.log(isLiked);
+
 }
 
 // console.log(document.querySelector('like-glyph').innerHTML);
